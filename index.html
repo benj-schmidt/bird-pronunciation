@@ -6,26 +6,13 @@
     <input id="startButton" type="button" value="Pronounce!"/>
   </body>
   <script type="application/javascript">
-    // function pronounce() {
-    //     var input = document.getElementById('bird-name').value;
-    //     var name = input.split(" ");
-    //     // var output = document.getElementById('output');
-    //     name.forEach(async (word) => {
-    //         var audio = new Audio(word + '.ogg');
-    //         audio.play();
-    //     });
-    //     output.innerHMTL = input;
-    // }
     function playNext() {
         if(audioPointer < audioArray.length) {
-            // try {
-            audio = new Audio(audioArray[audioPointer] + '.ogg');
+            audio = new Audio(audioArray[audioPointer] + '.mp3');
             audio.addEventListener("ended", playNext);
             audio.play();
             console.log(`playing ${audioArray[audioPointer]}`);
-            // } finally {
             audioPointer += 1;
-            // }
         } else {
             console.log("finished");
         }
@@ -45,8 +32,6 @@
     }
     const startButton = document.getElementById("startButton");
     startButton.addEventListener("click", onStart);
-    // var audioArray = document.getElementById("bird-name").value.split(" ");
-    // var audioArray = ["great","blue","heron"];
     var audioArray = ["great", "blue", "heron"];
     let audioPointer;
     let audio;
