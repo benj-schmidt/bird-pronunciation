@@ -1,0 +1,58 @@
+<!DOCTYPE html5>
+<html>
+  <body>
+    <label for="bird-name">Bird:</label>
+    <input type="text" id="bird-name" name="bird-name"></input><br/><br/>
+    <input id="startButton" type="button" value="Pronounce!"/>
+  </body>
+  <script type="application/javascript">
+    // function pronounce() {
+    //     var input = document.getElementById('bird-name').value;
+    //     var name = input.split(" ");
+    //     // var output = document.getElementById('output');
+    //     name.forEach(async (word) => {
+    //         var audio = new Audio(word + '.ogg');
+    //         audio.play();
+    //     });
+    //     output.innerHMTL = input;
+    // }
+    function playNext() {
+        if(audioPointer < audioArray.length) {
+            // try {
+            audio = new Audio(audioArray[audioPointer] + '.ogg');
+            audio.addEventListener("ended", playNext);
+            audio.play();
+            console.log(`playing ${audioArray[audioPointer]}`);
+            // } finally {
+            audioPointer += 1;
+            // }
+        } else {
+            console.log("finished");
+        }
+    }
+
+    function onStart() {
+        if (audio) {
+            audio.pause();
+        }
+        var name = document.getElementById("bird-name").value;
+        audioArray = name.split(" ");
+        console.log(audioArray);
+        document.getElementById('output').innerHTML = document.getElementById('bird-name').value;
+        console.log("start");
+        audioPointer = 0;
+        playNext();
+    }
+    const startButton = document.getElementById("startButton");
+    startButton.addEventListener("click", onStart);
+    // var audioArray = document.getElementById("bird-name").value.split(" ");
+    // var audioArray = ["great","blue","heron"];
+    var audioArray = ["great", "blue", "heron"];
+    let audioPointer;
+    let audio;
+  </script>
+  <p>This handy bird pronunciation guide is a labor of love!  Please let us know if you find any mistakes, or any species which aren't covered.</p>
+  <p>Senpai Sibley pleaes notice us</p>
+  <p id="output"></p>
+</html>
+
