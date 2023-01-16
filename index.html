@@ -21,8 +21,9 @@
     function tweakAudioArray () {
         // if (this == ["blue", "jay"]) {this = ['blue-jay']}
         if (audioArray.length == 2 && audioArray[0] == 'blue' && audioArray[1] == 'jay') {audioArray = ['blue-jay']};
-        if (audioArray[-1] == 'owl') {audioArray.unshift('pre-owl')};
-        if (audioArray[0] == 'chihuahuan') {audioArray.push('post-chihuahuan')};
+        if (audioArray[audioArray.length-1] == 'owl') {audioArray.unshift('pre-owl')};
+        if (audioArray.includes ('chihuahuan')) {audioArray.push('post-chihuahuan')};
+        if (audioArray.includes('cackling')) {audioArray.push('post-cackling')};
     }
 
     function onStart() {
